@@ -8,7 +8,7 @@ const marketplaceKeys = [
   'short_description',
   'long_description',
   'installation_instructions',
-  'parameters'
+  'parameters',
 ]
 
 class TranslationsPlugin {
@@ -44,22 +44,20 @@ function buildMarketplaceTranslationFile (filename, filepath) {
   return {
     [translationsPath]: {
       size: () => marketplaceTranslations.length,
-      source: () => marketplaceTranslations
-    }
+      source: () => marketplaceTranslations,
+    },
   }
 }
 
 function extractMarketplaceTranslation (translations, filename) {
   const translationsOutput = {
     _warning: `AUTOMATICALLY GENERATED FROM $/src/translations/${filename} - DO NOT MODIFY THIS FILE DIRECTLY`,
-    app: {}
+    app: {},
   }
 
-  marketplaceKeys.forEach(
-    key => {
-      if (translations.app[key]) translationsOutput.app[key] = translations.app[key]
-    }
-  )
+  marketplaceKeys.forEach((key) => {
+    if (translations.app[key]) translationsOutput.app[key] = translations.app[key]
+  })
 
   return JSON.stringify(translationsOutput, null, JS_INDENT)
 }

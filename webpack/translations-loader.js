@@ -22,33 +22,30 @@
  *   app.steps.click: 'this button'
  * }
  */
+
 /* eslint-disable array-callback-return */
 function translationFlatten (object, currentKeys = []) {
   const res = {}
 
-  Object.keys(object).map(
-    key => {
-      const value = object[key]
+  Object.keys(object).map((key) => {
+    const value = object[key]
 
-      if (typeof value === 'object') {
-        if (value.title && value.value) {
-          const flattenedKey = [...currentKeys, key].join('.')
-          res[flattenedKey] = value.value
-        } else {
-          Object.assign(
-            res,
-            translationFlatten(value, [...currentKeys, key])
-          )
-        }
-      } else {
+    if (typeof value === 'object') {
+      if (value.title && value.value) {
         const flattenedKey = [...currentKeys, key].join('.')
-        res[flattenedKey] = value
+        res[flattenedKey] = value.value
+      } else {
+        Object.assign(res, translationFlatten(value, [...currentKeys, key]))
       }
+    } else {
+      const flattenedKey = [...currentKeys, key].join('.')
+      res[flattenedKey] = value
     }
-  )
+  })
 
   return res
 }
+
 /* eslint-enable array-callback-return */
 
 function TranslationsLoader (content) {
