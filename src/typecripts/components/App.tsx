@@ -2,23 +2,17 @@ import React, { createContext } from 'react';
 import { render } from 'react-dom';
 import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming';
 
-import I18n from '@lib/i18n';
-import AppView from 'src/javascripts/components/AppView';
+import I18n from 'src/typecripts/lib/i18n';
+import AppView from 'src/typecripts/components/AppView';
+import { ZAFClient } from '@lib/types';
 
-export interface ZafClient {
-  get: (key: string) => Promise<any>;
-  set: (key: string, value: any) => Promise<void>;
-  invoke: (key: string) => Promise<void>;
-  on: (key: string, callback: () => void) => void;
-}
-
-export const ClientContext = createContext<ZafClient|undefined>(undefined);
+export const ClientContext = createContext<ZAFClient|undefined>(undefined);
 
 class App {
-  _client: ZafClient;
+  _client: ZAFClient;
   initializePromise: Promise<void>;
 
-  constructor(client: ZafClient) {
+  constructor(client: ZAFClient) {
     this._client = client;
 
     // this.initializePromise is only used in testing

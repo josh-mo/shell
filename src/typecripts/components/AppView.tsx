@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from '@zendeskgarden/react-grid';
 
-import useClient from '@hooks/useClient';
+import useClient from 'src/typecripts/hooks/useClient';
 
 const AppView = () => {
   const client = useClient();

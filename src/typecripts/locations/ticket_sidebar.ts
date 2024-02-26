@@ -1,7 +1,7 @@
 // need to import basic garden css styles
 import '@zendeskgarden/css-bedrock'
 
-import App from 'src/javascripts/components/App'
+import App from 'src/typecripts/components/App'
 
 /* global ZAFClient */
 // @ts-ignore ZAFClient is a global variable

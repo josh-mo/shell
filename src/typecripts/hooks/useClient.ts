@@ -1,7 +1,10 @@
 import { useContext } from 'react';
-import { ClientContext, ZafClient } from 'src/javascripts/components/App';
+import { ClientContext } from 'src/typecripts/components/App';
 
-const useClient = ():ZafClient => {
+import { ZAFClient } from '@lib/types';
+
+
+const useClient = ():ZAFClient => {
   const context = useContext(ClientContext);
   if (context === undefined) {
     throw new Error(`useClient must be used within a ClientProvider`);

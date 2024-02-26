@@ -8,9 +8,9 @@
     "resolveJsonModule": true,
     "paths": {
       "src/*": ["./src/*"],
-      "@components/*": ["src/javascripts/components/*"],
-      "@lib/*": ["./src/javascripts/lib/*"],
-      "@hooks/*": ["./src/javascripts/hooks/*"]
+      "@components/*": ["src/typecripts/components/*"],
+      "@lib/*": ["src/typecripts/lib/*"],
+      "@hooks/*": ["src/typecripts/hooks/*"]
     },
     "jsx": "react",
     "allowSyntheticDefaultImports": true,

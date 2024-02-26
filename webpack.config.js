@@ -11,15 +11,15 @@ const externalAssets = {
 
 module.exports = {
   entry: {
-    app: ['@babel/polyfill', './src/javascripts/locations/ticket_sidebar.ts', './src/index.css'],
+    app: ['@babel/polyfill', './src/typecripts/locations/ticket_sidebar.ts', './src/index.css'],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
       'src': path.resolve(__dirname, './src'),
-      '@components': path.resolve(__dirname, './src/javascripts/components'),
-      '@lib': path.resolve(__dirname, './src/javascripts/lib'),
-      '@hooks': path.resolve(__dirname, './src/javascripts/hooks'),
+      '@components': path.resolve(__dirname, './src/typecripts/components'),
+      '@lib': path.resolve(__dirname, './src/typecripts/lib'),
+      '@hooks': path.resolve(__dirname, './src/typecripts/hooks'),
     },
   },
   output: {
