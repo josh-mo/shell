@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ClientContext } from 'src/javascripts/modules/app';
+import { ClientContext } from 'src/javascripts/modules/App';
 
 export const useClient = () => {
   const context = useContext(ClientContext);

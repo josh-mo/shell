@@ -1,3 +1,11 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+    // You might have other presets here like `@babel/preset-env`
+  ],
+  "plugins": [
+    // Add any Babel plugins you're using here
+  ]
 }

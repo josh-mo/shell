@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "composite": true,
+    "lib": ["dom", "webworker", "es2020", "scripthost", "dom.iterable"],
+    "types": ["jest", "node", "testing-library__jest-dom"],
+    "noErrorTruncation": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "src/*": ["./src/*"],
+      "@components/*": ["./src/javascripts/components/*"],
+      "@lib/*": ["./src/javascripts/lib/*"],
+      "@hooks/*": ["./src/javascripts/hooks/*"]
+    },
+    "allowSyntheticDefaultImports": true
+  },
+  "extends": "../tsconfigBase.json",
+  "exclude": ["**/node_modules", "**/.*/", "**/__fixtures__/", "**/stories.js"],
+  "include": [".", "**/*.json"]
+}

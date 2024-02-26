@@ -11,9 +11,10 @@ const externalAssets = {
 
 module.exports = {
   entry: {
-    app: ['@babel/polyfill', './src/javascripts/locations/ticket_sidebar.js', './src/index.css'],
+    app: ['@babel/polyfill', './src/javascripts/locations/ticket_sidebar.ts', './src/index.css'],
   },
   resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
       'src': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/javascripts/components'),
@@ -29,12 +30,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
+        test: /\.(ts|tsx)$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript',
+            ],
+          },
         },
+        exclude: /node_modules/,
       },
       {
         type: 'javascript/auto',
