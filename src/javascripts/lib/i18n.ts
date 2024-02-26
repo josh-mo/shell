@@ -1,7 +1,7 @@
 import manifest from '../../manifest.json'
 
 // map to store the key/translation pairs of the loaded language
-let translations
+let translations: {[key: string]: string};
 
 /**
  * Replace placeholders in the given string with context
@@ -9,7 +9,12 @@ let translations
  * @param {Object} context object contains placeholder/value pairs
  * @return {String} formatted string
  */
-function parsePlaceholders (str, context) {
+
+type Context = {
+  [key: string]: string;
+};
+
+function parsePlaceholders (str:string, context: Context = {'': ''}) {
   const regex = /{{(.*?)}}/g
   const matches = []
   let match
@@ -21,16 +26,17 @@ function parsePlaceholders (str, context) {
 
   return matches.reduce((str, match) => {
     const newRegex = new RegExp(match[0], 'g')
+    if(!match[1]) throw new Error('Invalid context');
     return str.replace(newRegex, context[match[1]] || '')
   }, str)
 }
 
 class I18n {
-  constructor (locale) {
+  constructor (locale: string) {
     this.loadTranslations(locale)
   }
 
-  tryRequire (locale) {
+  tryRequire (locale: string) {
     try {
       return require(`../../translations/${locale}.json`)
     } catch (e) {
@@ -45,7 +51,7 @@ class I18n {
    * @param {Object} context object contains placeholder/value pairs
    * @return {String} translated string
    */
-  t (key, context) {
+  t (key:string, context: Context) {
     const keyType = typeof key
     if (keyType !== 'string') throw new Error(`Translation key must be a string, got: ${keyType}`)
 
